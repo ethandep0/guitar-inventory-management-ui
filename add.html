@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="index.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Guitar Inventory Management</title>
+    </head>
+    <body>
+        <div class="Header">
+            <div class="HeaderHome">
+                <a href="index.html">Guitar Inventory Management</a>
+            </div>
+            <div class="HeaderNav">
+                <a href="about.html">About</a>
+                <a href="add.html">Add</a>
+                <a href="search.html">Search</a>
+            </div>
+        </div>
+        <div class="AddContainer">
+            <div class="TextContainer">
+                <label for="serialNumberTXT">Serial Number:</label>
+                <input type="text" id="serialNumberTXT" name="textbox1">
+            </div>
+
+            <div class="TextContainer">
+                <label for="priceTXT">Price:</label>
+                <input type="text" id="priceTXT" name="textbox2">
+            </div>
+
+            <div class="TextContainer">
+                <label for="builderTXT">Builder:</label>
+                <input type="text" id="builderTXT" name="textbox3">
+            </div>
+
+            <div class="TextContainer">
+                <label for="modelTXT">Model:</label>
+                <input type="text" id="modelTXT" name="textbox4">
+            </div>
+
+            <div class="TextContainer">
+                <label for="typeTXT">Type:</label>
+                <input type="text" id="typeTXT" name="textbox5">
+            </div>
+
+            <div class="TextContainer">
+                <label for="backwoodTXT">Back Wood:</label>
+                <input type="text" id="backwoodTXT" name="textbox6">
+            </div>
+
+            <div class="TextContainer">
+                <label for="topwoodTXT">Top Wood:</label>
+                <input type="text" id="topwoodTXT" name="textbox7">
+            </div>
+
+            <button onclick=addGuitar()>Add Guitar</button>
+        </div>
+
+        <script>
+            function addGuitar(){
+                let serialNumber = document.getElementById("serialNumberTXT").value;
+                let price = document.getElementById("priceTXT").value;
+                let builder = document.getElementById("builderTXT").value;
+                let model = document.getElementById("modelTXT").value;
+                let type = document.getElementById("typeTXT").value;
+                let backwood = document.getElementById("backwoodTXT").value;
+                let topwood = document.getElementById("topwoodTXT").value;
+
+                let guitar = {serialNumber: serialNumber, price: price, builder: builder, model: model, type: type, backwood: backwood, topwood: topwood};
+                alert("You entered: " + JSON.stringify(guitar));
+            }
+        </script>
+    </body>
+</html>
