@@ -65,10 +65,35 @@
                 let type = document.getElementById("typeTXT").value;
                 let backwood = document.getElementById("backwoodTXT").value;
                 let topwood = document.getElementById("topwoodTXT").value;
+                if (!serialNumber || !price || !builder || !model || !type || !backwood || !topwood) {
+                    alert("Please enter a value for all fields.");
+                    return;
+                }
+                fetch('https://ethandep0.github.io/guitar-inventory-management-ui/addGuitar', {
+                 method: 'POST', // or 'PUT'
+                    headers: {
+                'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(guitar),
+                })
 
                 let guitar = {serialNumber: serialNumber, price: price, builder: builder, model: model, type: type, backwood: backwood, topwood: topwood};
                 alert("You entered: " + JSON.stringify(guitar));
-            }
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Backend response indicates success
+                    alert("The guitar was added to the system.");
+                } else {
+                    // Backend response indicates an error
+                    alert("Something went wrong. Please try again or contact the customer support team.");
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert("Something went wrong. Please try again or contact the customer support team.");
+            });
+        }
         </script>
     </body>
 </html>
