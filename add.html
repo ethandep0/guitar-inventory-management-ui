@@ -57,7 +57,8 @@
         </div>
 
         <script>
-            function addGuitar(){
+            async function addGuitar(){
+                let host = "https://guitar-inventory-management-0q1w.onrender.com";
                 let serialNumber = document.getElementById("serialNumberTXT").value;
                 let price = document.getElementById("priceTXT").value;
                 let builder = document.getElementById("builderTXT").value;
@@ -79,21 +80,23 @@
 
                 let guitar = {serialNumber: serialNumber, price: price, builder: builder, model: model, type: type, backwood: backwood, topwood: topwood};
                 alert("You entered: " + JSON.stringify(guitar));
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    // Backend response indicates success
-                    alert("The guitar was added to the system.");
+                console.log(guitar);
+                let request = {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(guitar)
+                };
+                let respone = await fetch(host + "/inventory", request);
+                if (respone.status == 200){
+                    message = "The guitar was added to the system";
                 } else {
-                    // Backend response indicates an error
-                    alert("Something went wrong. Please try again or contact the customer support team.");
+                    console.log(respone);
+                    message = "An error has occured, please contact the support team";
                 }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert("Something went wrong. Please try again or contact the customer support team.");
-            });
-        }
+                alert(message);
+            }
         </script>
     </body>
 </html>
