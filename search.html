@@ -88,6 +88,7 @@
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${configuration.token()}`
                     },
                     body: JSON.stringify(query),
                 })
@@ -98,14 +99,11 @@
                     return response.json();
                 })
                 .then(data => {
-                    // Clear previous search results
                     let table = document.getElementById("searchResult");
                     table.innerHTML = "";
 
-                    // Populate table with new search results
                     data.forEach(guitar => {
                         let row = document.createElement("tr");
-                        // Create and append cells for each attribute
                         Object.values(guitar).forEach(value => {
                             let cell = document.createElement("td");
                             cell.textContent = value;
