@@ -55,10 +55,10 @@
 
             <button onclick=addGuitar()>Add Guitar</button>
         </div>
-
+        <script src="configuration.js"></script>
         <script>
             async function addGuitar(){
-                let host = "https://guitar-inventory-management-0q1w.onrender.com";
+                let Ihost = getHost();
                 let serialNumber = document.getElementById("serialNumberTXT").value;
                 let price = document.getElementById("priceTXT").value;
                 let builder = document.getElementById("builderTXT").value;
@@ -71,9 +71,10 @@
                     return;
                 }
                 fetch('https://ethandep0.github.io/guitar-inventory-management-ui/addGuitar', {
-                 method: 'POST', // or 'PUT'
+                 method: 'POST', 
                     headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${configuration.token()}`
                 },
                 body: JSON.stringify(guitar),
                 })
