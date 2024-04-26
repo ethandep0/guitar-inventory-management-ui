@@ -1,6 +1,6 @@
 const host=1;
 
-const host_local="http://localhost:8080";
+const host_local="http://localhost:6002";
 const host_remote="https://guitar-inventory-management-0q1w.onrender.com";
 
 function getHost(){

@@ -70,7 +70,7 @@
                     alert("Please enter a value for all fields.");
                     return;
                 }
-                fetch('https://ethandep0.github.io/guitar-inventory-management-ui/addGuitar', {
+                fetch(getHost()+'/addGuitar', {
                  method: 'POST', 
                     headers: {
                 'Content-Type': 'application/json',
